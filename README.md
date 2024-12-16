@@ -1,5 +1,7 @@
 # K0s Demo
 
+k0s is an open source, all-inclusive Kubernetes distribution, which is configured with all of the features needed to build a Kubernetes cluster.
+
 ## Setup
 
 ```bash
