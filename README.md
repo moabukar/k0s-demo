@@ -14,4 +14,12 @@ ksctl apply --config k0sctl.yml
 ksctl kubeconfig > kubeconfig
 
 kubectl get pods --kubeconfig kubeconfig -A
+
+kubectl --kubeconfig kubeconfig get nodes
+
+##
+
+ksctl kubeconfig --config k0sctl.yml
+
+
 ```
