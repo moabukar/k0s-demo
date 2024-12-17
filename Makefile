@@ -89,6 +89,18 @@ K0SCTL_CONFIG=k0sctl.yml
 # Default targets
 .PHONY: all create spinup destroy
 
+# k0sctl_install:
+# 	@echo "Checking for k0sctl..."
+# 	@if ! command -v k0sctl &>/dev/null; then \
+# 		echo "k0sctl not found. Installing..."; \
+# 		curl -sSLf https://github.com/k0sproject/k0sctl/releases/latest/download/k0sctl-linux-x64 -o k0sctl; \
+# 		chmod +x k0sctl; \
+# 		sudo mv k0sctl /usr/local/bin/; \
+# 		echo "k0sctl installed successfully."; \
+# 	else \
+# 		echo "k0sctl is already installed."; \
+# 	fi
+
 # Create VMs using the init.sh script
 create:
 	@bash ./init.sh
@@ -96,7 +108,7 @@ create:
 # Install k0s on the created VMs
 spinup: create
 	@echo "Spinning up k0s cluster..."
-	k0sctl apply --config $(K0SCTL_CONFIG)
+	ksctl apply --config $(K0SCTL_CONFIG)
 
 # Destroy VMs and cleanup
 destroy:
@@ -115,4 +127,4 @@ list:
 # Check status of the cluster
 status:
 	@echo "Checking k0s cluster status..."
-	k0sctl status --config $(K0SCTL_CONFIG)
+	ksctl status --config $(K0SCTL_CONFIG)
